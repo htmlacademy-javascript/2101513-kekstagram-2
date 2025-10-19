@@ -3,6 +3,8 @@ export const LIKES_MIN_QUANTITY = 15;
 export const LIKES_MAX_QUANTITY = 200;
 export const COMMENTS_MIN_QUANTITY = 0;
 export const COMMENTS_MAX_QUANTITY = 30;
+export const COMMENT_MESSAGES_MIN_QUANTITY = 1;
+export const COMMENT_MESSAGES_MAX_QUANTITY = 2;
 export const AVATAR_MIN_ID = 1;
 export const AVATAR_MAX_ID = 6;
 
