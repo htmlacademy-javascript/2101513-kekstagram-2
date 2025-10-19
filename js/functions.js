@@ -77,3 +77,56 @@ extractNumbers('а я томат'); // NaN
 extractNumbers(2023); // 2023
 extractNumbers(-1); // 1
 extractNumbers(1.5); // 15
+
+/**
+ * Возвращает случайное числовое значение между min и max включительно
+ * @param min {number} - минимальное числовое значение
+ * @param max {number} - максимальное числовое значение
+ * @return {number}
+ * @throws {Error} Если аргументы некорректного типа ИЛИ число бесконечно
+ */
+const getRandomIntegerBetweenRange = (min, max) => {
+  if (
+    typeof min !== 'number' ||
+    typeof max !== 'number' ||
+    !Number.isFinite(min) ||
+    !Number.isFinite(max)
+  ) {
+    throw new Error(`${ErrorMessage.NUMBER} ${min}, ${max}`);
+  }
+
+  const minValue = Math.floor(Math.min(min, max));
+  const maxValue = Math.floor(Math.max(min, max));
+
+  return Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+};
+
+/**
+ * Возвращает случайный элемент массива
+ * @param array {array}
+ * @return {any}
+ * @throws {Error} Если аргументы некорректного типа ИЛИ массив пустой
+ */
+const getRandomArrayElement = (array) => {
+  if (!Array.isArray(array) || !array.length) {
+    throw new Error(`${ErrorMessage.ARRAY} ${array}`);
+  }
+
+  return array[getRandomIntegerBetweenRange(0, array.length - 1)];
+};
+
+/**
+ * Возвращает функцию для создания случайного неповторяющегося числового значения
+ * @return {Function}
+ */
+const getUniqueInteger = () => {
+  let currentId = 1;
+
+  return () => currentId++;
+};
+
+export {
+  getRandomIntegerBetweenRange,
+  getRandomArrayElement,
+  getUniqueInteger
+};
