@@ -1,4 +1,4 @@
-import {ErrorMessage} from './const.js';
+import {ErrorMessage} from './enum.js';
 
 /**
  * Проверяет, не превышает ли длина строки указанное значение.
