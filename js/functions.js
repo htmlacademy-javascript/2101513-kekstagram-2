@@ -5,7 +5,7 @@ import {ErrorMessage} from './enum.js';
  * @param {string} str - Строка для проверки.
  * @param {number} maxLength - Максимально допустимая длина.
  * @returns {boolean} true, если строка короче или равна maxLength, иначе false.
- * @throws {Error} Если аргументы некорректного типа.
+ * @throws {Error} Если аргументы некорректного типа ИЛИ бесконечны ИЛИ меньше или равны 0.
  */
 const checkIsStringHasValidLength = (str, maxLength) => {
   if (typeof str !== 'string' || !str.length) {
@@ -19,18 +19,11 @@ const checkIsStringHasValidLength = (str, maxLength) => {
   return str.length <= Math.floor(maxLength);
 };
 
-// Строка короче 20 символов
-checkIsStringHasValidLength('проверяемая строка', 20);
-// Длина строки ровно 18 символов
-checkIsStringHasValidLength('проверяемая строка', 18);
-// Строка длиннее 10 символов
-checkIsStringHasValidLength('проверяемая строка', 10);
-
 /**
  * Проверяет, является ли строка палиндромом
- * @param {string} str
- * @return {boolean} true, если строка является палиндромом, иначе false
- * @throws {Error} Если аргументы некорректного типа.
+ * @param {string} str - Строка для проверки.
+ * @return {boolean} true, если строка является палиндромом, иначе false.
+ * @throws {Error} Если аргументы некорректного типа ИЛИ длина строки равна 0.
  */
 const checkIsPalindrome = (str = '') => {
   if (typeof str !== 'string' || !str.length) {
@@ -43,18 +36,11 @@ const checkIsPalindrome = (str = '') => {
   return normalizedString === reversedNormalizedString;
 };
 
-// Строка является палиндромом
-checkIsPalindrome('топот');
-// Несмотря на разный регистр, тоже палиндром
-checkIsPalindrome('ДовОд');
-// Это не палиндром
-checkIsPalindrome('Кекс');
-
 /**
  * Извлекает из входящего параметра цифры от 0 до 9 и возвращает их в виде целого положительного числа
- * @param {string | number} value
+ * @param {string | number} value - Значение, впоследствие приводящееся к строке.
  * @return {number | NaN} При наличии цифр озвращает целое положительное число, иначе NaN.
- * @throws {Error} Если аргументы некорректного типа.
+ * @throws {Error} Если переданный аргумент пуст.
  */
 const extractNumbers = (value) => {
   const str = String(value);
@@ -68,22 +54,12 @@ const extractNumbers = (value) => {
   return digitsWithoutOperators ? Number(digitsWithoutOperators.join('')) : NaN;
 };
 
-extractNumbers('2023 год'); // 2023
-extractNumbers('ECMAScript 2022'); // 2022
-extractNumbers('1 кефир, 0.5 батона'); // 105
-extractNumbers('агент 007'); // 7
-extractNumbers('а я томат'); // NaN
-
-extractNumbers(2023); // 2023
-extractNumbers(-1); // 1
-extractNumbers(1.5); // 15
-
 /**
  * Возвращает случайное числовое значение между min и max включительно
- * @param min {number} - минимальное числовое значение
- * @param max {number} - максимальное числовое значение
- * @return {number}
- * @throws {Error} Если аргументы некорректного типа ИЛИ число бесконечно
+ * @param min {number} - Минимальное числовое значение.
+ * @param max {number} - Максимальное числовое значение.
+ * @return {number} - Случайное числовое значение.
+ * @throws {Error} Если аргументы некорректного типа ИЛИ бесконечны.
  */
 const getRandomIntegerBetweenRange = (min, max) => {
   if (
@@ -105,7 +81,7 @@ const getRandomIntegerBetweenRange = (min, max) => {
  * Возвращает случайный элемент массива
  * @param array {array}
  * @return {any}
- * @throws {Error} Если аргументы некорректного типа ИЛИ массив пустой
+ * @throws {Error} Если аргумент некорректного типа ИЛИ пустой
  */
 const getRandomArrayElement = (array) => {
   if (!Array.isArray(array) || !array.length) {
@@ -126,6 +102,9 @@ const getUniqueInteger = () => {
 };
 
 export {
+  checkIsStringHasValidLength,
+  checkIsPalindrome,
+  extractNumbers,
   getRandomIntegerBetweenRange,
   getRandomArrayElement,
   getUniqueInteger
