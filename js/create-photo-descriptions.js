@@ -53,4 +53,6 @@ const createPhotoDescription = () => {
   };
 };
 
-export const createPhotoDescriptions = (quantity = PHOTOS_QUANTITY) => Array.from({length: quantity}, createPhotoDescription);
+const createPhotoDescriptions = (quantity = PHOTOS_QUANTITY) => Array.from({length: quantity}, createPhotoDescription);
+
+export default createPhotoDescriptions;
