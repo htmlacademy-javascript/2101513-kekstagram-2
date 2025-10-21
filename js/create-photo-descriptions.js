@@ -1,4 +1,4 @@
-import {getRandomArrayElement, getRandomIntegerBetweenRange, getUniqueInteger} from './utils.js';
+import {getRandomArrayElement, getRandomIntegerBetweenRange, getUniqueIntegerGenerator} from './utils.js';
 import {
   AVATAR_MIN_ID, AVATAR_MAX_ID,
   COMMENT_MESSAGES, COMMENT_MESSAGES_MIN_QUANTITY, COMMENT_MESSAGES_MAX_QUANTITY,
@@ -9,8 +9,8 @@ import {
   PHOTOS_QUANTITY
 } from './consts.js';
 
-const getUniqueCommentId = getUniqueInteger();
-const getUniquePhotoDescriptionId = getUniqueInteger();
+const getUniqueCommentId = getUniqueIntegerGenerator();
+const getUniquePhotoDescriptionId = getUniqueIntegerGenerator();
 
 const createCommentMessage = () => {
   const commentMessagesQuantity = getRandomIntegerBetweenRange(COMMENT_MESSAGES_MIN_QUANTITY, COMMENT_MESSAGES_MAX_QUANTITY);

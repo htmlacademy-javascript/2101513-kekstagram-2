@@ -95,7 +95,7 @@ export const getRandomArrayElement = (array) => {
  * Возвращает функцию для создания случайного неповторяющегося числового значения
  * @return {Function}
  */
-export const getUniqueInteger = () => {
+export const getUniqueIntegerGenerator = () => {
   let currentId = 1;
 
   return () => currentId++;
