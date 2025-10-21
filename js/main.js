@@ -1,4 +1,4 @@
-import {getRandomArrayElement, getRandomIntegerBetweenRange, getUniqueInteger} from './functions.js';
+import {getRandomArrayElement, getRandomIntegerBetweenRange, getUniqueInteger} from './utils.js';
 import {
   AVATAR_MIN_ID, AVATAR_MAX_ID,
   COMMENT_MESSAGES, COMMENT_MESSAGES_MIN_QUANTITY, COMMENT_MESSAGES_MAX_QUANTITY,
@@ -7,7 +7,7 @@ import {
   DESCRIPTIONS,
   LIKES_MIN_QUANTITY, LIKES_MAX_QUANTITY,
   PHOTOS_QUANTITY
-} from './const.js';
+} from './consts.js';
 
 const getUniqueCommentId = getUniqueInteger();
 const getUniquePhotoDescriptionId = getUniqueInteger();
