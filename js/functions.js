@@ -7,7 +7,7 @@ import {ErrorMessage} from './enum.js';
  * @returns {boolean} true, если строка короче или равна maxLength, иначе false.
  * @throws {Error} Если аргументы некорректного типа ИЛИ бесконечны ИЛИ меньше или равны 0.
  */
-const checkIsStringHasValidLength = (str, maxLength) => {
+export const checkIsStringHasValidLength = (str, maxLength) => {
   if (typeof str !== 'string' || !str.length) {
     throw new Error(`${ErrorMessage.STRING} ${str}`);
   }
@@ -25,7 +25,7 @@ const checkIsStringHasValidLength = (str, maxLength) => {
  * @return {boolean} true, если строка является палиндромом, иначе false.
  * @throws {Error} Если аргументы некорректного типа ИЛИ длина строки равна 0.
  */
-const checkIsPalindrome = (str = '') => {
+export const checkIsPalindrome = (str = '') => {
   if (typeof str !== 'string' || !str.length) {
     throw new Error(`${ErrorMessage.STRING} ${str}`);
   }
@@ -42,7 +42,7 @@ const checkIsPalindrome = (str = '') => {
  * @return {number | NaN} При наличии цифр озвращает целое положительное число, иначе NaN.
  * @throws {Error} Если переданный аргумент пуст.
  */
-const extractNumbers = (value) => {
+export const extractNumbers = (value) => {
   const str = String(value);
 
   if (!str.length) {
@@ -61,7 +61,7 @@ const extractNumbers = (value) => {
  * @return {number} - Случайное числовое значение.
  * @throws {Error} Если аргументы некорректного типа ИЛИ бесконечны.
  */
-const getRandomIntegerBetweenRange = (min, max) => {
+export const getRandomIntegerBetweenRange = (min, max) => {
   if (
     typeof min !== 'number' ||
     typeof max !== 'number' ||
@@ -83,7 +83,7 @@ const getRandomIntegerBetweenRange = (min, max) => {
  * @return {any}
  * @throws {Error} Если аргумент некорректного типа ИЛИ пустой
  */
-const getRandomArrayElement = (array) => {
+export const getRandomArrayElement = (array) => {
   if (!Array.isArray(array) || !array.length) {
     throw new Error(`${ErrorMessage.ARRAY} ${array}`);
   }
@@ -95,17 +95,8 @@ const getRandomArrayElement = (array) => {
  * Возвращает функцию для создания случайного неповторяющегося числового значения
  * @return {Function}
  */
-const getUniqueInteger = () => {
+export const getUniqueInteger = () => {
   let currentId = 1;
 
   return () => currentId++;
-};
-
-export {
-  checkIsStringHasValidLength,
-  checkIsPalindrome,
-  extractNumbers,
-  getRandomIntegerBetweenRange,
-  getRandomArrayElement,
-  getUniqueInteger
 };
