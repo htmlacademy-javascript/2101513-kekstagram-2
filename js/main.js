@@ -1,4 +1,8 @@
-import createPhotoDescriptions from './create-photo-descriptions.js';
+import {PHOTOS_QUANTITY} from './consts.js';
 
-// eslint-disable-next-line
-console.log(createPhotoDescriptions());
+import createPhotoDescriptions from './create-photo-descriptions.js';
+import renderThumbnails from './render-thumbnails.js';
+
+const photoDescriptions = createPhotoDescriptions(PHOTOS_QUANTITY);
+
+renderThumbnails(photoDescriptions);
