@@ -7,6 +7,7 @@ export const COMMENT_MESSAGES_MIN_QUANTITY = 1;
 export const COMMENT_MESSAGES_MAX_QUANTITY = 2;
 export const AVATAR_MIN_ID = 1;
 export const AVATAR_MAX_ID = 6;
+export const MINUTES_IN_HOUR = 60;
 
 export const DESCRIPTIONS = [
   'Лучший день в моей жизни!',

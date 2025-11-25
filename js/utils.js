@@ -1,4 +1,5 @@
 import {ErrorMessage} from './enums.js';
+import {MINUTES_IN_HOUR} from './consts.js';
 
 /**
  * Проверяет, не превышает ли длина строки указанное значение.
@@ -99,4 +100,18 @@ export const getUniqueIntegerGenerator = () => {
   let currentId = 1;
 
   return () => currentId++;
+};
+
+/**
+ * Преобразует строковое представление времени в формате "Ч:М"
+ * @param {string} timeStr - Строка, представляющая время в формате "Ч:М" (часы:минуты).
+ * Часы и минуты могут быть указаны как одной, так и двумя цифрами.
+ * @returns {number} Общее количество минут, прошедших с 00:00.
+ */
+export const timeToMinutes = (timeStr) => {
+  const [hoursString, minutesString] = timeStr.split(':');
+  const hours = parseInt(hoursString, 10);
+  const minutes = parseInt(minutesString, 10);
+
+  return hours * MINUTES_IN_HOUR + minutes;
 };
