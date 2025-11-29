@@ -1,8 +1,8 @@
 const picturesContainerElement = document.querySelector('.pictures');
-const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const pictureTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
 const createThumbnail = ({url, description, likes, comments}) => {
-  const thumbnail = pictureTemplate.cloneNode(true);
+  const thumbnail = pictureTemplateElement.cloneNode(true);
 
   const imageElement = thumbnail.querySelector('.picture__img');
   const likesElement = thumbnail.querySelector('.picture__likes');
