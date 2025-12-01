@@ -10,6 +10,10 @@ export const AVATAR_MAX_ID = 6;
 export const MINUTES_IN_HOUR = 60;
 export const COMMENTS_PER_VIEW = 5;
 export const ESC_KEY_NAME = 'Escape';
+export const MAX_COMMENT_LENGTH = 140;
+export const MAX_HASHTAG_COUNT = 5;
+export const MAX_HASHTAG_LENGTH = 20;
+export const HASHTAG_PATTERN = /^#[a-zа-яё0-9]{1,19}$/i;
 
 export const DESCRIPTIONS = [
   'Лучший день в моей жизни!',
