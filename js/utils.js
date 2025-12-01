@@ -1,5 +1,5 @@
 import {ErrorMessage} from './enums.js';
-import {MINUTES_IN_HOUR} from './consts.js';
+import {MINUTES_IN_HOUR, ESC_KEY_NAME} from './consts.js';
 
 /**
  * Проверяет, не превышает ли длина строки указанное значение.
@@ -115,3 +115,10 @@ export const timeToMinutes = (timeStr) => {
 
   return hours * MINUTES_IN_HOUR + minutes;
 };
+
+/**
+ * Возвращает результат проверки нажатия пользователем на кнопку Ecs
+ * @param {KeyboardEvent} evt
+ * @returns {boolean}
+ */
+export const isEscKeydown = (evt) => evt.key === ESC_KEY_NAME;

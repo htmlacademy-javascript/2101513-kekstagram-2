@@ -1,31 +1,52 @@
+import { openBigPicture } from './big-picture.js';
+
 const picturesContainerElement = document.querySelector('.pictures');
 const pictureTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
-const createThumbnail = ({url, description, likes, comments}) => {
+/**
+ * Создает DOM-элемент миниатюры на основе данных фотографии.
+ * @param {object} photoData - Данные фотографии.
+ * @returns {HTMLElement} - Готовый элемент миниатюры.
+ */
+const createThumbnail = ({ id, url, description, likes, comments }) => {
   const thumbnail = pictureTemplateElement.cloneNode(true);
-
   const imageElement = thumbnail.querySelector('.picture__img');
-  const likesElement = thumbnail.querySelector('.picture__likes');
-  const commentsElement = thumbnail.querySelector('.picture__comments');
 
+  thumbnail.dataset.thumbnailId = id;
   imageElement.src = url;
   imageElement.alt = description;
-  likesElement.textContent = likes;
-  commentsElement.textContent = comments.length;
+  thumbnail.querySelector('.picture__likes').textContent = likes;
+  thumbnail.querySelector('.picture__comments').textContent = comments.length;
 
   return thumbnail;
 };
 
+/**
+ * Отрисовывает миниатюры на странице и добавляет обработчик для открытия полноразмерного фото.
+ * @param {Array<object>} photos - Массив объектов с данными фотографий.
+ */
 const renderThumbnails = (photos) => {
   const fragment = document.createDocumentFragment();
-
   photos.forEach((photo) => {
-    const thumbnail = createThumbnail(photo);
-
-    fragment.append(thumbnail);
+    fragment.append(createThumbnail(photo));
   });
-
   picturesContainerElement.append(fragment);
+
+  picturesContainerElement.addEventListener('click', (evt) => {
+    const thumbnail = evt.target.closest('[data-thumbnail-id]');
+    if (!thumbnail) {
+      return;
+    }
+    evt.preventDefault();
+
+    const photoData = photos.find(
+      (photo) => photo.id === Number(thumbnail.dataset.thumbnailId)
+    );
+
+    if (photoData) {
+      openBigPicture(photoData);
+    }
+  });
 };
 
 export default renderThumbnails;
