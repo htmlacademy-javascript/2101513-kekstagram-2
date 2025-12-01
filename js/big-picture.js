@@ -38,7 +38,6 @@ const closeBigPicture = () => {
   document.removeEventListener('keydown', onDocumentKeydown);
   commentsLoaderElement.removeEventListener('click', renderComments);
 
-  // Сброс состояния
   commentsShown = 0;
   allComments = [];
 };

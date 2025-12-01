@@ -3,11 +3,6 @@ import { openBigPicture } from './big-picture.js';
 const picturesContainerElement = document.querySelector('.pictures');
 const pictureTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
-/**
- * Создает DOM-элемент миниатюры на основе данных фотографии.
- * @param {object} photoData - Данные фотографии.
- * @returns {HTMLElement} - Готовый элемент миниатюры.
- */
 const createThumbnail = ({ id, url, description, likes, comments }) => {
   const thumbnail = pictureTemplateElement.cloneNode(true);
   const imageElement = thumbnail.querySelector('.picture__img');
@@ -21,22 +16,22 @@ const createThumbnail = ({ id, url, description, likes, comments }) => {
   return thumbnail;
 };
 
-/**
- * Отрисовывает миниатюры на странице и добавляет обработчик для открытия полноразмерного фото.
- * @param {Array<object>} photos - Массив объектов с данными фотографий.
- */
 const renderThumbnails = (photos) => {
   const fragment = document.createDocumentFragment();
+
   photos.forEach((photo) => {
     fragment.append(createThumbnail(photo));
   });
+
   picturesContainerElement.append(fragment);
 
   picturesContainerElement.addEventListener('click', (evt) => {
     const thumbnail = evt.target.closest('[data-thumbnail-id]');
+
     if (!thumbnail) {
       return;
     }
+
     evt.preventDefault();
 
     const photoData = photos.find(
