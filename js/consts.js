@@ -8,6 +8,8 @@ export const COMMENT_MESSAGES_MAX_QUANTITY = 2;
 export const AVATAR_MIN_ID = 1;
 export const AVATAR_MAX_ID = 6;
 export const MINUTES_IN_HOUR = 60;
+export const COMMENTS_PER_VIEW = 5;
+export const ESC_KEY_NAME = 'Escape';
 
 export const DESCRIPTIONS = [
   'Лучший день в моей жизни!',
