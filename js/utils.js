@@ -1,5 +1,8 @@
 import {ErrorMessage} from './enums.js';
-import {MINUTES_IN_HOUR, ESC_KEY_NAME} from './consts.js';
+import {
+  MINUTES_IN_HOUR,
+  ESC_KEY_NAME
+} from './consts.js';
 
 /**
  * Проверяет, не превышает ли длина строки указанное значение.
@@ -122,3 +125,46 @@ export const timeToMinutes = (timeStr) => {
  * @returns {boolean}
  */
 export const isEscKeydown = (evt) => evt.key === ESC_KEY_NAME;
+
+/**
+ * Преобразует строку с хэштегами в массив, удаляя пробелы и приводя к нижнему регистру.
+ * @param {string} value - Строка из поля ввода.
+ * @returns {string[]} - Массив хэштегов.
+ */
+export const parseHashtags = (value) => value.trim().toLowerCase().split(/\s+/).filter((tag) => tag.length > 0);
+
+/**
+ * Проверяет, соответствует ли каждый хэштег заданному паттерну.
+ * @param {string} value - Строка из поля ввода.
+ * @param {RegExp} pattern - Регулярное выражение для проверки.
+ * @returns {boolean} - True, если все хэштеги валидны.
+ */
+export const validateHashtagPattern = (value, pattern) => {
+  if (!value) {
+    return true;
+  }
+  const hashtags = parseHashtags(value);
+  return hashtags.every((tag) => pattern.test(tag));
+};
+
+/**
+ * Проверяет, не превышено ли максимальное количество хэштегов.
+ * @param {string} value - Строка из поля ввода.
+ * @param {number} maxCount - Максимальное количество хэштегов.
+ * @returns {boolean} - True, если количество не превышено.
+ */
+export const validateHashtagCount = (value, maxCount) => {
+  const hashtags = parseHashtags(value);
+  return hashtags.length <= maxCount;
+};
+
+/**
+ * Проверяет наличие дубликатов хэштегов.
+ * @param {string} value - Строка из поля ввода.
+ * @returns {boolean} - True, если дубликатов нет.
+ */
+export const validateHashtagDuplicates = (value) => {
+  const hashtags = parseHashtags(value);
+  const uniqueHashtags = new Set(hashtags);
+  return uniqueHashtags.size === hashtags.length;
+};
