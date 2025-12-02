@@ -12,8 +12,11 @@ export const COMMENTS_PER_VIEW = 5;
 export const ESC_KEY_NAME = 'Escape';
 export const MAX_COMMENT_LENGTH = 140;
 export const MAX_HASHTAG_COUNT = 5;
-export const MAX_HASHTAG_LENGTH = 20;
 export const HASHTAG_PATTERN = /^#[a-zа-яё0-9]{1,19}$/i;
+export const SCALE_STEP = 25;
+export const MIN_SCALE = 25;
+export const MAX_SCALE = 100;
+export const DEFAULT_SCALE = 100;
 
 export const DESCRIPTIONS = [
   'Лучший день в моей жизни!',

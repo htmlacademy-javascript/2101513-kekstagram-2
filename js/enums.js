@@ -16,3 +16,54 @@ export const ValidateErrors = {
   DUPLICATE: 'Один и тот же хэштег не может быть использован дважды.',
   LENGTH: `Длина комментария не может быть больше ${MAX_COMMENT_LENGTH} символов.`
 };
+
+export const EffectsConfig = {
+  none: {
+    slider: {
+      range: { min: 0, max: 100 },
+      step: 1,
+      start: 100,
+    },
+    filter: () => 'none',
+  },
+  chrome: {
+    slider: {
+      range: { min: 0, max: 1 },
+      step: 0.1,
+      start: 1,
+    },
+    filter: (value) => `grayscale(${value})`,
+  },
+  sepia: {
+    slider: {
+      range: { min: 0, max: 1 },
+      step: 0.1,
+      start: 1,
+    },
+    filter: (value) => `sepia(${value})`,
+  },
+  marvin: {
+    slider: {
+      range: { min: 0, max: 100 },
+      step: 1,
+      start: 100,
+    },
+    filter: (value) => `invert(${value}%)`,
+  },
+  phobos: {
+    slider: {
+      range: { min: 0, max: 3 },
+      step: 0.1,
+      start: 3,
+    },
+    filter: (value) => `blur(${value}px)`,
+  },
+  heat: {
+    slider: {
+      range: { min: 1, max: 3 },
+      step: 0.1,
+      start: 3,
+    },
+    filter: (value) => `brightness(${value})`,
+  },
+};

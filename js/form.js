@@ -1,3 +1,5 @@
+import { initImageEditor, resetImageEditor } from './picture-editor.js';
+
 import {
   isEscKeydown,
   validateHashtagPattern,
@@ -36,6 +38,7 @@ const closeForm = () => {
 
   formElement.reset();
   pristine.reset();
+  resetImageEditor();
 
   document.removeEventListener('keydown', onDocumentKeydown);
 };
@@ -43,6 +46,8 @@ const closeForm = () => {
 const openForm = () => {
   formOverlayElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
+
+  initImageEditor();
 
   document.addEventListener('keydown', onDocumentKeydown);
 };
