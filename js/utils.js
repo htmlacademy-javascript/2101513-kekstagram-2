@@ -168,3 +168,40 @@ export const validateHashtagDuplicates = (value) => {
   const uniqueHashtags = new Set(hashtags);
   return uniqueHashtags.size === hashtags.length;
 };
+
+export const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export const throttle = (callback, delayBetweenFrames) => {
+  let lastTime = 0;
+
+  return (...rest) => {
+    const now = new Date();
+
+    if (now - lastTime >= delayBetweenFrames) {
+      callback.apply(this, rest);
+      lastTime = now;
+    }
+  };
+};
+
+/**
+ * Сортирует фотографии в случайном порядке.
+ * @returns {number}
+ */
+export const sortRandomly = () => Math.random() - 0.5;
+
+/**
+ * Сортирует фотографии по количеству комментариев в порядке убывания.
+ * @param {object} photoA - Первая фотография для сравнения.
+ * @param {object} photoB - Вторая фотография для сравнения.
+ * @returns {number} - Результат сравнения.
+ */
+export const sortByComments = (photoA, photoB) => photoB.comments.length - photoA.comments.length;
