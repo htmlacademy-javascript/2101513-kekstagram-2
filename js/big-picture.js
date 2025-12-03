@@ -51,6 +51,8 @@ function onDocumentKeydown(evt) {
 }
 
 export const openBigPicture = ({ url, description, likes, comments }) => {
+  commentsShown = 0;
+
   imageElement.src = url;
   captionElement.textContent = description;
   likesCountElement.textContent = likes;

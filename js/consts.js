@@ -21,6 +21,7 @@ export const BASE_API_URL = 'https://31.javascript.htmlacademy.pro/kekstagram';
 export const DATA_ERROR_SHOW_TIME = 5000;
 export const RANDOM_PHOTOS_COUNT = 10;
 export const DEBOUNCE_DELAY = 500;
+export const FILE_TYPES = ['jpg', 'jpeg', 'png', 'gif'];
 
 export const DESCRIPTIONS = [
   'Лучший день в моей жизни!',
