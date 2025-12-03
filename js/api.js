@@ -1,5 +1,4 @@
-import { BASE_API_URL} from './consts.js';
-
+import {BASE_API_URL} from './consts.js';
 import {Method, Route, ApiErrorMessage} from './enums.js';
 
 /**

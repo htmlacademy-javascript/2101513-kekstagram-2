@@ -1,13 +1,9 @@
-import {
-  debounce,
-  sortRandomly,
-  sortByComments
-} from './utils.js';
-import { Filter } from './enums.js';
-import { RANDOM_PHOTOS_COUNT, DEBOUNCE_DELAY } from './consts.js';
+import {debounce, sortRandomly, sortByComments} from './utils.js';
+import {Filter} from './enums.js';
+import {RANDOM_PHOTOS_COUNT, DEBOUNCE_DELAY} from './consts.js';
 
-const filtersContainer = document.querySelector('.img-filters');
-const picturesContainer = document.querySelector('.pictures');
+const filtersElement = document.querySelector('.img-filters');
+const photosElement = document.querySelector('.pictures');
 
 let currentFilter = Filter.DEFAULT;
 let originalPhotos = [];
@@ -23,42 +19,45 @@ const getFilteredPhotos = () => {
   }
 };
 
-const clearThumbnails = () => {
-  const existingPictures = picturesContainer.querySelectorAll('.picture');
-  existingPictures.forEach((picture) => picture.remove());
+const clearPhotos = () => {
+  photosElement.querySelectorAll('.picture').forEach((picture) => picture.remove());
 };
 
-const setOnFilterClick = (callback) => {
-  filtersContainer.addEventListener('click', (evt) => {
-    const target = evt.target.closest('.img-filters__button');
-    if (!target) {
+const setActiveButton = (targetButton) => {
+  const activeButton = filtersElement.querySelector('.img-filters__button--active');
+
+  if (activeButton) {
+    activeButton.classList.remove('img-filters__button--active');
+  }
+
+  targetButton.classList.add('img-filters__button--active');
+};
+
+const setOnFilterClick = (onFilterChange) => {
+  filtersElement.addEventListener('click', (evt) => {
+    const button = evt.target.closest('.img-filters__button');
+
+    if (!button) {
       return;
     }
 
-    const activeButton = filtersContainer.querySelector('.img-filters__button--active');
-    if (activeButton) {
-      activeButton.classList.remove('img-filters__button--active');
-    }
-    target.classList.add('img-filters__button--active');
-    currentFilter = target.id;
+    setActiveButton(button);
+    currentFilter = button.id;
 
-    // Вызываем колбэк (функцию отрисовки) с отфильтрованными фотографиями
-    callback(getFilteredPhotos());
+    onFilterChange();
   });
 };
 
 const initFilters = (loadedPhotos, renderCallback) => {
-  originalPhotos = [...loadedPhotos];
-  filtersContainer.classList.remove('img-filters--inactive');
+  originalPhotos = loadedPhotos.slice();
+  filtersElement.classList.remove('img-filters--inactive');
 
   const debouncedRender = debounce(() => {
-    clearThumbnails();
+    clearPhotos();
     renderCallback(getFilteredPhotos());
   }, DEBOUNCE_DELAY);
 
-  setOnFilterClick(() => {
-    debouncedRender();
-  });
+  setOnFilterClick(debouncedRender);
 };
 
 export default initFilters;
