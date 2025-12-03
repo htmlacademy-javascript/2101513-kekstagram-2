@@ -1,14 +1,4 @@
-import {
-  MAX_COMMENT_LENGTH,
-  MAX_HASHTAG_COUNT
-} from './consts.js';
-
-export const ErrorMessage = {
-  STRING: 'Expected a not empty string, got a',
-  NUMBER: 'Expected a positive finite number, got a',
-  STRING_OR_NUMBER: 'Expected a not empty string or a positive finite number, got a',
-  ARRAY: 'Expected an array, got a',
-};
+import {MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT} from './consts.js';
 
 export const ValidateError = {
   INVALID: 'Введён невалидный хэштег',
@@ -76,6 +66,13 @@ export const Method = {
 export const Route = {
   GET: '/data',
   POST: '/',
+};
+
+export const ErrorMessage = {
+  STRING: 'Ожидается не пустая строка, получено ',
+  NUMBER: 'Ожидается положительное конечное число, получено ',
+  STRING_OR_NUMBER: 'Ожидается не пустая строка или положительное конечно число, получено ',
+  ARRAY: 'Ожидается массив, получен ',
 };
 
 export const LoadingMessage = {
