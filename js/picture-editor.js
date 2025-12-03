@@ -75,6 +75,10 @@ const onSliderUpdate = () => {
 };
 
 const initSlider = () => {
+  if (sliderElement.noUiSlider) {
+    return;
+  }
+
   noUiSlider.create(sliderElement, {
     ...EffectsConfig.none.slider,
     connect: 'lower',

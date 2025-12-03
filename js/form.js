@@ -44,9 +44,9 @@ const closeForm = () => {
   formOverlayElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
 
+  resetImageEditor();
   formElement.reset();
   pristine.reset();
-  resetImageEditor();
 
   document.removeEventListener('keydown', onDocumentKeydown);
 };

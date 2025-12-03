@@ -51,11 +51,13 @@ const initFilters = (loadedPhotos, renderCallback) => {
   originalPhotos = [...loadedPhotos];
   filtersContainer.classList.remove('img-filters--inactive');
 
-  const debouncedRender = debounce(renderCallback, DEBOUNCE_DELAY);
+  const debouncedRender = debounce(() => {
+    clearThumbnails();
+    renderCallback(getFilteredPhotos());
+  }, DEBOUNCE_DELAY);
 
   setOnFilterClick(() => {
-    clearThumbnails();
-    debouncedRender(getFilteredPhotos());
+    debouncedRender();
   });
 };
 
