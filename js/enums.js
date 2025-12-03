@@ -87,3 +87,9 @@ export const ApiErrorMessage = {
   GET: 'Ошибка загрузки данных. Попробуйте обновить страницу или зайти позже.',
   POST: 'Ошибка отправки формы. Попробуйте отправить форму ещё раз или воспользуйтесь ею позже.',
 };
+
+export const Filter = {
+  DEFAULT: 'filter-default',
+  RANDOM: 'filter-random',
+  DISCUSSED: 'filter-discussed',
+};
