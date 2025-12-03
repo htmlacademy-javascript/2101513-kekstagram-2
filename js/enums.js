@@ -10,7 +10,7 @@ export const ErrorMessage = {
   ARRAY: 'Expected an array, got a',
 };
 
-export const ValidateErrors = {
+export const ValidateError = {
   INVALID: 'Введён невалидный хэштег',
   LIMIT: `Нельзя указать больше ${MAX_HASHTAG_COUNT} хэштегов.`,
   DUPLICATE: 'Один и тот же хэштег не может быть использован дважды.',
@@ -66,4 +66,24 @@ export const EffectsConfig = {
     },
     filter: (value) => `brightness(${value})`,
   },
+};
+
+export const Method = {
+  GET: 'GET',
+  POST: 'POST',
+};
+
+export const Route = {
+  GET: '/data',
+  POST: '/',
+};
+
+export const LoadingMessage = {
+  DEFAULT: 'Опубликовать',
+  LOAD: 'Публикую...'
+};
+
+export const ApiErrorMessage = {
+  GET: 'Ошибка загрузки данных. Попробуйте обновить страницу или зайти позже.',
+  POST: 'Ошибка отправки формы. Попробуйте отправить форму ещё раз или воспользуйтесь ею позже.',
 };
