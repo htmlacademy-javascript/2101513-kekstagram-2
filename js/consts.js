@@ -17,6 +17,8 @@ export const SCALE_STEP = 25;
 export const MIN_SCALE = 25;
 export const MAX_SCALE = 100;
 export const DEFAULT_SCALE = 100;
+export const BASE_API_URL = 'https://31.javascript.htmlacademy.pro/kekstagram';
+export const DATA_ERROR_SHOW_TIME = 5000;
 
 export const DESCRIPTIONS = [
   'Лучший день в моей жизни!',

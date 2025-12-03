@@ -1,7 +1,12 @@
-import createPhotoDescriptions from './create-photo-descriptions.js';
 import renderThumbnails from './render-thumbnails.js';
+import { getData } from './api.js';
+import { showDataErrorMessage } from './messages.js';
 import './form.js';
 
-const photoDescriptions = createPhotoDescriptions();
+try {
+  const photoDescriptions = await getData();
 
-renderThumbnails(photoDescriptions);
+  renderThumbnails(photoDescriptions);
+} catch {
+  showDataErrorMessage();
+}
