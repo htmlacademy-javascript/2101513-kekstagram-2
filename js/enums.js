@@ -1,13 +1,6 @@
 import {MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT} from './consts.js';
 
-export const ValidateError = {
-  INVALID: 'Введён невалидный хэштег',
-  LIMIT: `Нельзя указать больше ${MAX_HASHTAG_COUNT} хэштегов.`,
-  DUPLICATE: 'Один и тот же хэштег не может быть использован дважды.',
-  LENGTH: `Длина комментария не может быть больше ${MAX_COMMENT_LENGTH} символов.`
-};
-
-export const EffectsConfig = {
+export const PictureEffect = {
   none: {
     slider: {
       range: { min: 0, max: 100 },
@@ -68,8 +61,14 @@ export const Route = {
   POST: '/',
 };
 
-export const ErrorMessage = {
-  STRING: 'Ожидается не пустая строка, получено ',
+export const Filter = {
+  DEFAULT: 'filter-default',
+  RANDOM: 'filter-random',
+  DISCUSSED: 'filter-discussed',
+};
+
+export const TypeErrorMessage = {
+  STRING: 'Ожидается строка, получено ',
   NUMBER: 'Ожидается положительное конечное число, получено ',
   STRING_OR_NUMBER: 'Ожидается не пустая строка или положительное конечно число, получено ',
   ARRAY: 'Ожидается массив, получен ',
@@ -85,8 +84,9 @@ export const ApiErrorMessage = {
   POST: 'Ошибка отправки формы. Попробуйте отправить форму ещё раз или воспользуйтесь ею позже.',
 };
 
-export const Filter = {
-  DEFAULT: 'filter-default',
-  RANDOM: 'filter-random',
-  DISCUSSED: 'filter-discussed',
+export const ValidateErrorMessage = {
+  INVALID: 'Введён невалидный хэштег',
+  LIMIT: `Нельзя указать больше ${MAX_HASHTAG_COUNT} хэштегов.`,
+  DUPLICATE: 'Один и тот же хэштег не может быть использован дважды.',
+  LENGTH: `Длина комментария не может быть больше ${MAX_COMMENT_LENGTH} символов.`
 };

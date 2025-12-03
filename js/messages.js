@@ -1,9 +1,7 @@
-import { DATA_ERROR_SHOW_TIME } from './consts.js';
-
-import { isEscKeydown } from './utils.js';
+import {DATA_ERROR_SHOW_TIME} from './consts.js';
+import {isEscKeydown} from './utils.js';
 
 const bodyElement = document.querySelector('body');
-
 const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
 const dataErrorMessageTemplate = document.querySelector('#data-error').content.querySelector('.data-error');

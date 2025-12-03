@@ -6,7 +6,7 @@ import {
 } from './consts.js';
 
 import {
-  EffectsConfig
+  PictureEffect
 } from './enums.js';
 
 const formElement = document.querySelector('.img-upload__form');
@@ -44,7 +44,7 @@ const onIncreaseSizeButtonClick = () => {
 };
 
 const updateSlider = () => {
-  const { slider } = EffectsConfig[currentEffect];
+  const { slider } = PictureEffect[currentEffect];
 
   sliderElement.noUiSlider.updateOptions({
     range: slider.range,
@@ -71,12 +71,16 @@ const onSliderUpdate = () => {
   const sliderValue = sliderElement.noUiSlider.get();
 
   effectLevelValueElement.value = sliderValue;
-  previewImageElement.style.filter = EffectsConfig[currentEffect].filter(sliderValue);
+  previewImageElement.style.filter = PictureEffect[currentEffect].filter(sliderValue);
 };
 
 const initSlider = () => {
+  if (sliderElement.noUiSlider) {
+    return;
+  }
+
   noUiSlider.create(sliderElement, {
-    ...EffectsConfig.none.slider,
+    ...PictureEffect.none.slider,
     connect: 'lower',
     format: {
       to: (value) => Number.isInteger(value) ? value.toFixed(0) : value.toFixed(1),

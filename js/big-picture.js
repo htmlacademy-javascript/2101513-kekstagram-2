@@ -1,6 +1,6 @@
-import { COMMENTS_PER_VIEW } from './consts.js';
-import { isEscKeydown } from './utils.js';
-import { createCommentsFragment } from './render-thumbnails-comments';
+import {COMMENTS_PER_VIEW} from './consts.js';
+import {isEscKeydown} from './utils.js';
+import createCommentsFragment from './render-thumbnails-comments';
 
 const bodyElement = document.querySelector('body');
 

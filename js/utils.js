@@ -1,4 +1,4 @@
-import {ErrorMessage} from './enums.js';
+import {TypeErrorMessage} from './enums.js';
 import { ESC_KEY_NAME } from './consts.js';
 
 /**
@@ -8,13 +8,13 @@ import { ESC_KEY_NAME } from './consts.js';
  * @returns {boolean} true, если строка короче или равна maxLength, иначе false.
  * @throws {Error} Если аргументы некорректного типа ИЛИ бесконечны ИЛИ меньше или равны 0.
  */
-export const checkIsStringHasValidLength = (str, maxLength) => {
-  if (typeof str !== 'string' || !str.length) {
-    throw new Error(`${ErrorMessage.STRING} ${str}`);
+export const isStringHasValidLength = (str, maxLength) => {
+  if (typeof str !== 'string') {
+    throw new Error(`${TypeErrorMessage.STRING} ${str}`);
   }
 
   if (typeof maxLength !== 'number' || !Number.isFinite(maxLength) || maxLength <= 0) {
-    throw new Error(`${ErrorMessage.NUMBER} ${maxLength}`);
+    throw new Error(`${TypeErrorMessage.NUMBER} ${maxLength}`);
   }
 
   return str.length <= Math.floor(maxLength);
