@@ -1,10 +1,28 @@
-// src/form.js
+import {
+  initImageEditor,
+  resetImageEditor,
+  updatePreviewImage
+} from './picture-editor.js';
 
-import { initImageEditor, resetImageEditor } from './picture-editor.js';
-import { isEscKeydown, validateHashtagPattern, validateHashtagCount, validateHashtagDuplicates, checkIsStringHasValidLength } from './utils.js';
-import { MAX_COMMENT_LENGTH, MAX_HASHTAG_COUNT, HASHTAG_PATTERN } from './consts.js';
+import {
+  isEscKeydown,
+  validateHashtagPattern,
+  validateHashtagCount,
+  validateHashtagDuplicates,
+  checkIsStringHasValidLength
+} from './utils.js';
+
+import {
+  MAX_COMMENT_LENGTH,
+  MAX_HASHTAG_COUNT,
+  HASHTAG_PATTERN,
+  FILE_TYPES
+} from './consts.js';
+
 import { ValidateError, LoadingMessage } from './enums.js';
+
 import { sendData } from './api.js';
+
 import { showSuccessMessage, showErrorMessage } from './messages.js';
 
 const bodyElement = document.querySelector('body');
@@ -67,6 +85,19 @@ const unblockSubmitButton = () => {
   submitButton.textContent = LoadingMessage.DEFAULT;
 };
 
+const onUploadInputChange = () => {
+  const file = uploadInputElement.files[0];
+  const fileName = file.name.toLowerCase();
+
+  const isImage = FILE_TYPES.some((ext) => fileName.endsWith(ext));
+
+  if (isImage) {
+    const imageUrl = URL.createObjectURL(file);
+    updatePreviewImage(imageUrl);
+    openForm();
+  }
+};
+
 formElement.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
@@ -86,5 +117,5 @@ formElement.addEventListener('submit', async (evt) => {
   }
 });
 
-uploadInputElement.addEventListener('change', openForm);
+uploadInputElement.addEventListener('change', onUploadInputChange);
 formCancelButtonElement.addEventListener('click', closeForm);

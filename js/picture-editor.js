@@ -16,11 +16,13 @@ const smallerButtonElement = formElement.querySelector('.scale__control--smaller
 const biggerButtonElement = formElement.querySelector('.scale__control--bigger');
 
 const effectsListElement = formElement.querySelector('.effects__list');
+const effectPreviewElements = effectsListElement.querySelectorAll('.effects__preview');
 const sliderContainerElement = formElement.querySelector('.img-upload__effect-level');
 const sliderElement = formElement.querySelector('.effect-level__slider');
 const effectLevelValueElement = formElement.querySelector('.effect-level__value');
 
 let currentEffect = 'none';
+let objectUrl = null;
 
 const applyScale = (value) => {
   scaleControlValueElement.value = `${value}%`;
@@ -85,6 +87,15 @@ const initSlider = () => {
   sliderElement.noUiSlider.on('update', onSliderUpdate);
 };
 
+export const updatePreviewImage = (url) => {
+  objectUrl = url;
+  previewImageElement.src = url;
+
+  effectPreviewElements.forEach((preview) => {
+    preview.style.backgroundImage = `url(${url})`;
+  });
+};
+
 export const initImageEditor = () => {
   currentEffect = 'none';
   sliderContainerElement.classList.add('hidden');
@@ -103,9 +114,18 @@ export const resetImageEditor = () => {
   sliderContainerElement.classList.add('hidden');
 
   applyScale(DEFAULT_SCALE);
-  sliderElement.noUiSlider.destroy();
+
+  if (sliderElement.noUiSlider) {
+    sliderElement.noUiSlider.destroy();
+  }
+
+  if (objectUrl) {
+    URL.revokeObjectURL(objectUrl);
+    objectUrl = null;
+  }
 
   smallerButtonElement.removeEventListener('click', onDecreaseSizeButtonClick);
   biggerButtonElement.removeEventListener('click', onIncreaseSizeButtonClick);
   effectsListElement.removeEventListener('change', onEffectChange);
 };
+
