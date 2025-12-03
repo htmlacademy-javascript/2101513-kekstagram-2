@@ -9,7 +9,7 @@ import { ESC_KEY_NAME } from './consts.js';
  * @throws {Error} Если аргументы некорректного типа ИЛИ бесконечны ИЛИ меньше или равны 0.
  */
 export const checkIsStringHasValidLength = (str, maxLength) => {
-  if (typeof str !== 'string' || !str.length) {
+  if (typeof str !== 'string') {
     throw new Error(`${ErrorMessage.STRING} ${str}`);
   }
 
